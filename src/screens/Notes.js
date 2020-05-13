@@ -17,16 +17,16 @@ const Notes = ({ navigation }) => {
     setNotes(data);
   };
 
-  const listToStateChange = () => {
+  const listenToStateChange = () => {
     setIsStateChanged(!isStateChanged);
   };
 
-  const _onPress = (id, title, description, listToStateChange) => {
+  const _onPress = (id, title, description, listenToStateChange) => {
     navigation.navigate("EditNote", {
       id,
       title,
       description,
-      listToStateChange,
+      listenToStateChange,
     });
   };
 
@@ -43,7 +43,7 @@ const Notes = ({ navigation }) => {
           text: "OK",
           onPress: () => {
             Database.deleteNote(id);
-            listToStateChange();
+            listenToStateChange();
           },
         },
       ],
@@ -71,7 +71,7 @@ const Notes = ({ navigation }) => {
                         item.id,
                         item.title,
                         item.description,
-                        listToStateChange
+                        listenToStateChange
                       )
                     }
                     longPress={() => _onLongPress(item.id)}
@@ -92,7 +92,9 @@ const Notes = ({ navigation }) => {
           small
           icon="plus"
           // label="Add new note"
-          onPress={() => navigation.navigate("AddNote", { listToStateChange })}
+          onPress={() =>
+            navigation.navigate("AddNote", { listenToStateChange })
+          }
         />
       </View>
     </>

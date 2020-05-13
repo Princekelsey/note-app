@@ -15,7 +15,7 @@ const EditNote = ({ navigation }) => {
 
   const updateNote = () => {
     Database.updateNote(id, noteTitle, description);
-    navigation.state.params.listToStateChange();
+    navigation.state.params.listenToStateChange();
     navigation.goBack();
   };
 

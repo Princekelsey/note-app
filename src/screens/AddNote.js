@@ -12,7 +12,7 @@ const AddNote = ({ navigation }) => {
   const saveNote = () => {
     const newTime = showDate();
     Database.addNote(noteTitle, description, newTime);
-    navigation.state.params.listToStateChange();
+    navigation.state.params.listenToStateChange();
     navigation.goBack();
   };
 
